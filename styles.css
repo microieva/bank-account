@@ -1,0 +1,116 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    color: rgb(34, 34, 34);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.top-container {
+    border: 2px solid darkgray;
+    border-radius: 7px;
+    margin-bottom: 3rem;
+    box-shadow:1px 1px 1px 1px lightgrey;
+    padding: 1rem 0;
+}
+
+h1 {
+    margin-left: 3rem;
+    font-size: 1.8em;
+}
+
+.ui-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid darkgray;
+    border-radius: 7px;
+    padding: 0 0 3rem 1rem;
+    box-shadow:1px 1px 1px 1px lightgrey;
+}
+
+.user-inputs {
+    margin: 3rem 0;
+}
+
+input {
+    min-height: 1.5rem;
+    border: 1px solid darkgray;
+    border-radius: 3px; 
+    padding-left: 1rem;
+}
+
+input:focus {
+    border: 1px solid orange;
+}
+
+select {
+    min-height: 1.8rem;
+    width: 10rem;
+    border-radius: 3px;
+    padding-left: 2.7rem;
+    background: none;
+}
+
+option {
+    min-height: 1.7rem;
+
+
+    background: none;
+}
+
+button {
+    min-height: 1.7rem;
+    width: 10rem;
+    border-radius: 3px;
+    border: 1px solid darkgray;
+    background: none;
+}
+
+button:focus {
+    border: 1px solid orange;
+
+}
+
+.container-cards {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 3rem;
+    padding: 0 2rem;
+    width: 100%;
+}
+
+.card {
+    width: 45%;
+    border: 1px solid lightgray;
+    border-radius: 7px;
+    margin: 0 1rem 0 0;
+    padding: 0 3rem;
+}
+
+.entry {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.entry>div {
+    border-bottom: 1px solid darkgray;
+    min-width: 30%;
+    text-align: center;
+}
+
+.title {
+    border-bottom: 1px solid lightgray;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.balance {
+    width: 90.5%;
+}
+
