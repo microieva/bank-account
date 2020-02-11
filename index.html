@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bank Account</title>
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <body>
-    <script src="./index.js" type="text/javascript"></script>
     <header></header>
     <main class='container'>
         <div class="top-container">
@@ -16,41 +16,41 @@
         </div>
         <div class='ui-container'>
             <div class="user-inputs">
-                <input class='user-input-description'placeholder="Description..."/>
-                <input class='user-input-amount'placeholder="Amount..."/>
+                <input class='user-input-description' placeholder="Description..."/>
+                <input class='user-input-amount' placeholder="Amount..."/>
                 <select class='select' placeholder="SELECT TYPE">
                     <option class="income" name="income">INCOME</option>
                     <option class="expence" name="expence">EXPENCE</option>
                 </select>
-                <button class='button-add'>ADD</button>
+                <button class='button-add'>Add</button>
             </div>
             <div class="container-cards">
-                <div class="card">
+                <div class="card incomes">
                     <div class="title"><h2>Incomes</h2></div>
-                    <div class="entry">
-                        <div class="description">Salary</div>
-                        <div class="amount">2 500</div>
-                        <div class="date">Feb 10, 2020 16:20</div>
+                    <div class="entry entry-incomes">
+                        <div class="income-description"></div>
+                        <div class="income-amount"></div>
+                        <div class="income-date"></div>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card expences">
                     <div class="title"><h2>Expences</h2></div>
-                    <div class="entry">
-                        <div class="description">Beer</div>
-                        <div class="amount">25.00</div>
-                        <div class="date">Feb 10, 2020 20:55</div>
+                    <div class="entry entry-expences">
+                        <div class="expence-description"></div>
+                        <div class="expence-amount"></div>
+                        <div class="expence-date"></div>
                     </div>
                 </div>
             </div>
             <div class="card balance">
                 <div class="title"><h2>Balance</h2></div>
-                <div class="entry">
-                    
+                <div class="balance-info">
+
                 </div>
             </div>
         </div>
     </main>
     <footer></footer>
-
+    <script src="app.js" type="text/javascript"></script>
 </body>
 </html>
