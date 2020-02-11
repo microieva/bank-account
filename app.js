@@ -38,37 +38,43 @@ const personAccount = {
 
     //=================================== INCOME ====================================
     addIncome: function() {
-        let userDescr = description.value;
-        let userAmnt = Number(amount.value);
-        const date = this.date();
-        this.incomes.push({userDescr, userAmnt, date});
-        //console.log("addIncome testing")
+        this.incomes.push(
+            {
+                description: description.value, 
+                amount: amount.value, 
+                date: this.date()
+            }
+        );
     },
 
     totalIncome: function() {
-        const total = this.incomes.reduce((acc, curr) => 
-        { 
-            return (acc + Number(curr.amount))
-        },0)
-        //console.log("total income: ", total)
-        return total;   
+        // let total = this.incomes.reduce((acc, curr) => {acc + Number(curr.amount)}, 0)
+        // return total;
+        const total = this.incomes.reduce((acc, curr) => {
+            return acc + curr.amount
+        }, 0)
+        return total
     },
     
     //=================================== EXPENCES ====================================
     addExpence: function() {
-        let userDescr = description.value;
-        let userAmnt = Number(amount.value);
-        const date = this.date();
-        this.expences.push({userDescr, userAmnt, date});
+        this.expences.push(
+            {
+                description: description.value, 
+                amount: amount.value, 
+                date: this.date()
+            }
+        );
     },
 
     totalExpence: function() {
-        const total = this.expences.reduce((acc, curr) => 
-        { 
-            return (acc + Number(curr.amount))
-        },0)
-        console.log("total expence: ", total)
-        return total;
+        // let total =  this.expences.reduce((acc, curr) => {acc + Number(curr.amount)}, 0) 
+        // return total;
+        //return this.expences.reduce((acc, curr) => acc + Number(curr.amount))
+        const total = this.expences.reduce((acc, curr) => {
+            return acc + curr.amount
+        }, 0)
+        return total
     },
 
     //=================================== BALANCE ====================================
@@ -86,6 +92,7 @@ const expenceEntry = document.querySelector('.entry-expences');
 const info = document.querySelector('.balance-info');
 
 const appendBalance = () => {
+    info.innerHTML = '';
     const balance = `<div>You have ${personAccount.accountBalance()} £ on your account.</div>`
     info.innerHTML += balance;
 }
@@ -130,20 +137,23 @@ buttonAdd.addEventListener('click', () => {
         appendIncomeDescription();
         appendIncomeAmount();
         appendIncomeDate()
-        console.log("CHECKING CONDITION")
+        console.log("after adding INCOME accountBalance(): ", personAccount.accountBalance())
+        console.log("after adding INCOME incomes[] = ", personAccount.incomes);
     } 
     if (selectType.value === 'EXPENCE'&& description.value != '' && amount.value != '') {
         personAccount.addExpence();
         appendExpenceDescription();
         appendExpenceAmount();
         appendExpenceDate();
-
-    }
+        console.log("after adding EXPENCE accountBalance(): ", personAccount.accountBalance())
+        console.log("after adding EXPENCE expences[] = ", personAccount.expences);
+    } 
     appendBalance();
     amount.value = '';
     description.value = '';
 })
-console.log("calling personAccount.accountBalance(): ", personAccount.accountBalance())
+console.log("BEGIN accountBalance()", personAccount.accountBalance())
+console.log("BEGIN incomes[] = ", personAccount.incomes);
 console.log("type of accountBalance(): ", typeof personAccount.accountBalance())
 console.log("type of totalIncome(): ", typeof personAccount.totalIncome())
 console.log("type of totalExpence(): ",typeof personAccount.totalExpence())
