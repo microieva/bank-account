@@ -51,7 +51,7 @@ const personAccount = {
         // let total = this.incomes.reduce((acc, curr) => {acc + Number(curr.amount)}, 0)
         // return total;
         const total = this.incomes.reduce((acc, curr) => {
-            return acc + curr.amount
+            return acc + Number(curr.amount)
         }, 0)
         return total
     },
@@ -72,7 +72,7 @@ const personAccount = {
         // return total;
         //return this.expences.reduce((acc, curr) => acc + Number(curr.amount))
         const total = this.expences.reduce((acc, curr) => {
-            return acc + curr.amount
+            return acc + Number(curr.amount)
         }, 0)
         return total
     },
