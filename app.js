@@ -23,9 +23,9 @@ const personAccount = {
         // take out whats needed
         const date = new Date();
         const str =  date.toDateString();
-        const month = '';
-        const day = '';
-        const year = '';
+        let month = '';
+        let day = '';
+        let year = '';
         const time = date.getHours()+':'+date.getMinutes();
         
         month += (str[4] + str[5] + str[6]);
@@ -37,13 +37,16 @@ const personAccount = {
 
     //=================================== INCOME ====================================
     addIncome: function() {
-        this.incomes.push(
+        const data = JSON.parse(localStorage.getItem('customer'))
+        data.incomes.push(
             {
                 description: description.value, 
                 amount: amount.value, 
                 date: this.date()
             }
-        );
+        )
+        const dataStr = JSON.stringify(data)
+        localStorage.setItem('customer', dataStr)     
     },
 
     totalIncome: function() {
@@ -57,13 +60,16 @@ const personAccount = {
     
     //=================================== EXPENSES ====================================
     addExpense: function() {
-        this.expenses.push(
+        const data = JSON.parse(localStorage.getItem('customer'))
+        data.expenses.push(
             {
                 description: description.value, 
                 amount: amount.value, 
                 date: this.date()
             }
-        );
+        )
+        const dataStr = JSON.stringify(data)
+        localStorage.setItem('customer', dataStr)
     },
 
     totalExpense: function() {
@@ -95,34 +101,73 @@ const appendBalance = () => {
     const balance = `<div>You have ${personAccount.accountBalance()} € on your account.</div>`
     info.innerHTML += balance;
 }
+//ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
 
 const appendIncomeDescription = () => {
-    const userDescription = `<div>${description.value}</div>`;
-    const incomeDescription = document.querySelector('.income-description');
-    incomeDescription.innerHTML += userDescription;
+    //getting info not from input anymore, BUT localStorage !!!!
+    const data = JSON.parse(localStorage.getItem('customer'))
+    // for i=0.. loop
+    for (let i=1; i<=data.incomes.length-1;i++) {
+        data.incomes.forEach((description) => {
+            const userDescription = `<div>${description.description}</div>`;
+            const incomeDescription = document.querySelector('.income-description');
+            incomeDescription.innerHTML += userDescription;
+        });
+    }
 }
 
 const appendIncomeAmount = () => {
-    const userAmount = `<div>${amount.value}</div>`
-    const incomeAmount = document.querySelector('.income-amount');
-    incomeAmount.innerHTML += userAmount;
+    // const userAmount = `<div>${amount.value}</div>`
+    // const incomeAmount = document.querySelector('.income-amount');
+    // incomeAmount.innerHTML += userAmount;
+    const data = JSON.parse(localStorage.getItem('customer'))
+    for (let i=1; i<=data.incomes.length-1;i++) {
+        data.incomes.forEach((amount) => {
+            const userAmount = `<div>${amount.amount}</div>`;
+            const incomeAmount = document.querySelector('.income-amount');
+            incomeAmount.innerHTML += userAmount;
+        });
+    }
 }
 
 const appendExpenseDescription = () => {
-    const userDescription = `<div>${description.value}</div>`;
-    const expenseDescription = document.querySelector('.expense-description');
-    expenseDescription.innerHTML += userDescription;
+    // const userDescription = `<div>${description.value}</div>`;
+    // const expenseDescription = document.querySelector('.expense-description');
+    // expenseDescription.innerHTML += userDescription;
+    const data = JSON.parse(localStorage.getItem('customer'))
+    for (let i=1; i<=data.expenses.length-1;i++) {
+        data.expenses.forEach((description) => {
+            const userDescription = `<div>${description.description}</div>`;
+            const expenseDescription = document.querySelector('.expense-description');
+            expenseDescription.innerHTML += userDescription;
+        });
+    }
 }
 
 const appendExpenseAmount = () => {
-    const userAmount = `<div>${amount.value}</div>`
-    const expenseAmount = document.querySelector('.expense-amount');
-    expenseAmount.innerHTML += userAmount;
+    // const userAmount = `<div>${amount.value}</div>`
+    // const expenseAmount = document.querySelector('.expense-amount');
+    // expenseAmount.innerHTML += userAmount;
+    const data = JSON.parse(localStorage.getItem('customer'))
+    for (let i=1; i<=data.expenses.length-1;i++) {
+        data.expenses.forEach((amount) => {
+            const userAmount = `<div>${amount.amount}</div>`;
+            const expenseAmount = document.querySelector('.expense-amount');
+            expenseAmount.innerHTML += userAmount;
+        });
+    }
 }
 
 const appendIncomeDate = () => {
     const incomeDate = document.querySelector('.income-date');
     incomeDate.innerHTML += `<div>${personAccount.date()}</div>`
+
+    // const data = JSON.parse(localStorage.getItem('customer'))
+    // data.incomes.forEach((date) => {
+    //     const userDescription = `<div>${date.date}</div>`;
+    //     const incomeDescription = document.querySelector('.income-description');
+    //     incomeDescription.innerHTML += userDescription;
+    // });
 }
 
 const appendExpenseDate = () => {
@@ -132,20 +177,32 @@ const appendExpenseDate = () => {
 
 buttonAdd.addEventListener('click', () => {
     if (selectType.value === 'INCOME' && description.value != '' && amount.value != '') {
+        
+        if (!(localStorage.getItem('customer'))) {
+            const personAccountStr = JSON.stringify(personAccount, undefined, 4)
+            localStorage.setItem('customer', personAccountStr)
+        } 
+
         personAccount.addIncome();
         appendIncomeDescription();
         appendIncomeAmount();
         appendIncomeDate()
-        console.log("after adding INCOME accountBalance(): ", personAccount.accountBalance())
-        console.log("after adding INCOME incomes[] = ", personAccount.incomes);
+        // console.log("after adding INCOME accountBalance(): ", personAccount.accountBalance())
+        // console.log("after adding INCOME incomes[] = ", personAccount.incomes);
     } 
     if (selectType.value === 'EXPENSE'&& description.value != '' && amount.value != '') {
+        
+        if (!(localStorage.getItem('customer'))) {
+            const personAccountStr = JSON.stringify(personAccount, undefined, 4)
+            localStorage.setItem('customer', personAccountStr)
+        } 
+
         personAccount.addExpense();
         appendExpenseDescription();
         appendExpenseAmount();
         appendExpenseDate();
-        console.log("after adding EXPENSE accountBalance(): ", personAccount.accountBalance())
-        console.log("after adding EXPENSE expenses[] = ", personAccount.expenses);
+        // console.log("after adding EXPENSE accountBalance(): ", personAccount.accountBalance())
+        // console.log("after adding EXPENSE expenses[] = ", personAccount.expenses);
     } 
     appendBalance();
     amount.value = '';
@@ -156,3 +213,5 @@ buttonAdd.addEventListener('click', () => {
 // console.log("type of accountBalance(): ", typeof personAccount.accountBalance())
 // console.log("type of totalIncome(): ", typeof personAccount.totalIncome())
 // console.log("type of totalExpense(): ",typeof personAccount.totalExpense())
+
+console.log("BEGIN localStorage :", localStorage);
