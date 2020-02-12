@@ -104,58 +104,50 @@ const appendBalance = () => {
 //ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
 
 const appendIncomeDescription = () => {
-    //getting info not from input anymore, BUT localStorage !!!!
     const data = JSON.parse(localStorage.getItem('customer'))
-    // for i=0.. loop
-    for (let i=1; i<=data.incomes.length-1;i++) {
-        data.incomes.forEach((description) => {
-            const userDescription = `<div>${description.description}</div>`;
-            const incomeDescription = document.querySelector('.income-description');
-            incomeDescription.innerHTML += userDescription;
-        });
-    }
+    //getting rid of the first empty dummy entry, in initial state object blueprint
+    const splicedDataIncomes = data.incomes.splice(1, data.incomes.length)
+    // NEED TO CHECK IF ALREADY PRINTED,
+    // COMPARE TIME - PRINT ONLY LAST ONE???? LATEST ONE????
+    splicedDataIncomes.forEach((description) => {
+        const userDescription = `<div>${description.description}</div>`;
+        const incomeDescription = document.querySelector('.income-description');
+        incomeDescription.innerHTML += userDescription;
+    });
+    
 }
 
 const appendIncomeAmount = () => {
-    // const userAmount = `<div>${amount.value}</div>`
-    // const incomeAmount = document.querySelector('.income-amount');
-    // incomeAmount.innerHTML += userAmount;
     const data = JSON.parse(localStorage.getItem('customer'))
-    for (let i=1; i<=data.incomes.length-1;i++) {
-        data.incomes.forEach((amount) => {
-            const userAmount = `<div>${amount.amount}</div>`;
-            const incomeAmount = document.querySelector('.income-amount');
-            incomeAmount.innerHTML += userAmount;
-        });
-    }
+    const splicedDataIncomes = data.incomes.splice(1, data.incomes.length)
+
+    splicedDataIncomes.forEach((amount) => {
+        const userAmount = `<div>${amount.amount}</div>`;
+        const incomeAmount = document.querySelector('.income-amount');
+        incomeAmount.innerHTML += userAmount;
+    });   
 }
 
 const appendExpenseDescription = () => {
-    // const userDescription = `<div>${description.value}</div>`;
-    // const expenseDescription = document.querySelector('.expense-description');
-    // expenseDescription.innerHTML += userDescription;
     const data = JSON.parse(localStorage.getItem('customer'))
-    for (let i=1; i<=data.expenses.length-1;i++) {
-        data.expenses.forEach((description) => {
-            const userDescription = `<div>${description.description}</div>`;
-            const expenseDescription = document.querySelector('.expense-description');
-            expenseDescription.innerHTML += userDescription;
-        });
-    }
+    const splicedDataExpenses = data.expenses.splice(1, data.incomes.length)
+
+    splicedDataExpenses.forEach((description) => {
+        const userDescription = `<div>${description.description}</div>`;
+        const expenseDescription = document.querySelector('.expense-description');
+        expenseDescription.innerHTML += userDescription;
+    });
 }
 
 const appendExpenseAmount = () => {
-    // const userAmount = `<div>${amount.value}</div>`
-    // const expenseAmount = document.querySelector('.expense-amount');
-    // expenseAmount.innerHTML += userAmount;
     const data = JSON.parse(localStorage.getItem('customer'))
-    for (let i=1; i<=data.expenses.length-1;i++) {
-        data.expenses.forEach((amount) => {
-            const userAmount = `<div>${amount.amount}</div>`;
-            const expenseAmount = document.querySelector('.expense-amount');
-            expenseAmount.innerHTML += userAmount;
-        });
-    }
+    const splicedDataExpenses = data.expenses.splice(1, data.incomes.length)
+
+    splicedDataExpenses.forEach((amount) => {
+        const userAmount = `<div>${amount.amount}</div>`;
+        const expenseAmount = document.querySelector('.expense-amount');
+        expenseAmount.innerHTML += userAmount;
+    });
 }
 
 const appendIncomeDate = () => {
