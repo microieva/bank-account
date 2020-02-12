@@ -9,7 +9,7 @@ const personAccount = {
             date: ""   
         }
     ],
-    expences: [
+    expenses: [
         {
             description: "", 
             amount: 0,
@@ -22,18 +22,17 @@ const personAccount = {
         //loop thru array
         // take out whats needed
         const date = new Date();
-        let str =  date.toDateString();
-        let month = '';
-        let day = '';
-        let year = '';
-        //let time 
+        const str =  date.toDateString();
+        const month = '';
+        const day = '';
+        const year = '';
+        const time = date.getHours()+':'+date.getMinutes();
         
         month += (str[4] + str[5] + str[6]);
         day += (str[8] + str[9]);
         year += (str[11] + str[12] + str[13] + str[14]);
-        //time += (str[15] + str[16] + str[17] + str[18]);
         
-        return month+' '+day+', '+year;
+        return month+' '+day+', '+year+' '+time;
     },
 
     //=================================== INCOME ====================================
@@ -56,9 +55,9 @@ const personAccount = {
         return total
     },
     
-    //=================================== EXPENCES ====================================
-    addExpence: function() {
-        this.expences.push(
+    //=================================== EXPENSES ====================================
+    addExpense: function() {
+        this.expenses.push(
             {
                 description: description.value, 
                 amount: amount.value, 
@@ -67,11 +66,11 @@ const personAccount = {
         );
     },
 
-    totalExpence: function() {
-        // let total =  this.expences.reduce((acc, curr) => {acc + Number(curr.amount)}, 0) 
+    totalExpense: function() {
+        // let total =  this.expenses.reduce((acc, curr) => {acc + Number(curr.amount)}, 0) 
         // return total;
-        //return this.expences.reduce((acc, curr) => acc + Number(curr.amount))
-        const total = this.expences.reduce((acc, curr) => {
+        //return this.expenses.reduce((acc, curr) => acc + Number(curr.amount))
+        const total = this.expenses.reduce((acc, curr) => {
             return acc + Number(curr.amount)
         }, 0)
         return total
@@ -79,21 +78,21 @@ const personAccount = {
 
     //=================================== BALANCE ====================================
     accountBalance: function() {
-       return this.totalIncome()-this.totalExpence();
+       return this.totalIncome()-this.totalExpense();
     },
 }
 
 const buttonAdd = document.querySelector('.button-add');
-let description = document.querySelector('.user-input-description');
-let amount = document.querySelector('.user-input-amount');
+const description = document.querySelector('.user-input-description');
+const amount = document.querySelector('.user-input-amount');
 const selectType = document.querySelector('.select');
 const incomeEntry = document.querySelector('.entry-incomes');
-const expenceEntry = document.querySelector('.entry-expences');
+const expenseEntry = document.querySelector('.entry-expenses');
 const info = document.querySelector('.balance-info');
 
 const appendBalance = () => {
     info.innerHTML = '';
-    const balance = `<div>You have ${personAccount.accountBalance()} £ on your account.</div>`
+    const balance = `<div>You have ${personAccount.accountBalance()} € on your account.</div>`
     info.innerHTML += balance;
 }
 
@@ -109,16 +108,16 @@ const appendIncomeAmount = () => {
     incomeAmount.innerHTML += userAmount;
 }
 
-const appendExpenceDescription = () => {
+const appendExpenseDescription = () => {
     const userDescription = `<div>${description.value}</div>`;
-    const expenceDescription = document.querySelector('.expence-description');
-    expenceDescription.innerHTML += userDescription;
+    const expenseDescription = document.querySelector('.expense-description');
+    expenseDescription.innerHTML += userDescription;
 }
 
-const appendExpenceAmount = () => {
+const appendExpenseAmount = () => {
     const userAmount = `<div>${amount.value}</div>`
-    const expenceAmount = document.querySelector('.expence-amount');
-    expenceAmount.innerHTML += userAmount;
+    const expenseAmount = document.querySelector('.expense-amount');
+    expenseAmount.innerHTML += userAmount;
 }
 
 const appendIncomeDate = () => {
@@ -126,9 +125,9 @@ const appendIncomeDate = () => {
     incomeDate.innerHTML += `<div>${personAccount.date()}</div>`
 }
 
-const appendExpenceDate = () => {
-    const expenceDate = document.querySelector('.expence-date');
-    expenceDate.innerHTML += `<div>${personAccount.date()}</div>`
+const appendExpenseDate = () => {
+    const expenseDate = document.querySelector('.expense-date');
+    expenseDate.innerHTML += `<div>${personAccount.date()}</div>`
 }
 
 buttonAdd.addEventListener('click', () => {
@@ -140,20 +139,20 @@ buttonAdd.addEventListener('click', () => {
         console.log("after adding INCOME accountBalance(): ", personAccount.accountBalance())
         console.log("after adding INCOME incomes[] = ", personAccount.incomes);
     } 
-    if (selectType.value === 'EXPENCE'&& description.value != '' && amount.value != '') {
-        personAccount.addExpence();
-        appendExpenceDescription();
-        appendExpenceAmount();
-        appendExpenceDate();
-        console.log("after adding EXPENCE accountBalance(): ", personAccount.accountBalance())
-        console.log("after adding EXPENCE expences[] = ", personAccount.expences);
+    if (selectType.value === 'EXPENSE'&& description.value != '' && amount.value != '') {
+        personAccount.addExpense();
+        appendExpenseDescription();
+        appendExpenseAmount();
+        appendExpenseDate();
+        console.log("after adding EXPENSE accountBalance(): ", personAccount.accountBalance())
+        console.log("after adding EXPENSE expenses[] = ", personAccount.expenses);
     } 
     appendBalance();
     amount.value = '';
     description.value = '';
 })
-console.log("BEGIN accountBalance()", personAccount.accountBalance())
-console.log("BEGIN incomes[] = ", personAccount.incomes);
-console.log("type of accountBalance(): ", typeof personAccount.accountBalance())
-console.log("type of totalIncome(): ", typeof personAccount.totalIncome())
-console.log("type of totalExpence(): ",typeof personAccount.totalExpence())
+// console.log("BEGIN accountBalance()", personAccount.accountBalance())
+// console.log("BEGIN incomes[] = ", personAccount.incomes);
+// console.log("type of accountBalance(): ", typeof personAccount.accountBalance())
+// console.log("type of totalIncome(): ", typeof personAccount.totalIncome())
+// console.log("type of totalExpense(): ",typeof personAccount.totalExpense())
