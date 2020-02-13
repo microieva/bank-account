@@ -32,6 +32,8 @@ const appendIncomeDescription = () => {
 
     const data = JSON.parse(localStorage.getItem('customer'))
     //getting rid of the first empty dummy entry, in initial state object blueprint
+    console.log(data.incomes)
+    data.incomes.forEach(element => console.log(element.amount))
     const splicedDataIncomes = data.incomes.splice(1, data.incomes.length)
     // NEED TO CHECK IF ALREADY PRINTED,
     // COMPARE TIME - PRINT ONLY LAST ONE???? LATEST ONE????

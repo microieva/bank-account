@@ -5,14 +5,14 @@ const personAccount = {
         {
             description: "", 
             amount: 0,
-            date: ""   
+            date: "date"   
         }
     ],
     expenses: [
         {
             description: "", 
             amount: 0,
-            date: ""
+            date: "date"
         }
     ],
 
@@ -34,7 +34,7 @@ const personAccount = {
         return month+' '+day+', '+year+' '+time;
     },
 
-    //=================================== INCOME ====================================
+    //=================================== INCOMES ====================================
     addIncome: function() {
         const data = JSON.parse(localStorage.getItem('customer'))
         data.incomes.push(
@@ -83,4 +83,3 @@ const personAccount = {
        return this.totalIncome()-this.totalExpense();
     },
 }
-
