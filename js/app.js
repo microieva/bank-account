@@ -7,6 +7,12 @@ const entry = document.querySelector('.entry');
 const incomeEntry = document.querySelector('.entry-incomes');
 const expenseEntry = document.querySelector('.entry-expenses');
 
+const run = () => {
+    displayIncomes();
+    displayExpenses();
+    appendBalance();
+}
+
 const displayIncomes = () => {
     appendIncomeDescription();
     appendIncomeAmount();
@@ -32,12 +38,7 @@ const appendIncomeDescription = () => {
 
     const data = JSON.parse(localStorage.getItem('customer'))
     //getting rid of the first empty dummy entry, in initial state object blueprint
-    console.log(data.incomes)
-    data.incomes.forEach(element => console.log(element.amount))
-    const splicedDataIncomes = data.incomes.splice(1, data.incomes.length)
-    // NEED TO CHECK IF ALREADY PRINTED,
-    // COMPARE TIME - PRINT ONLY LAST ONE???? LATEST ONE????
-    splicedDataIncomes.forEach((description) => {
+    data.incomes.forEach((description) => {
         const userDescription = `<div>${description.description}</div>`;
         incomeDescription.innerHTML += userDescription;
     });
@@ -49,9 +50,8 @@ const appendIncomeAmount = () => {
     incomeAmount.innerHTML = ''
 
     const data = JSON.parse(localStorage.getItem('customer'))
-    const splicedDataIncomes = data.incomes.splice(1, data.incomes.length)
 
-    splicedDataIncomes.forEach((amount) => {
+    data.incomes.forEach((amount) => {
         const userAmount = `<div>${amount.amount}</div>`;
         incomeAmount.innerHTML += userAmount;
     });   
@@ -62,9 +62,8 @@ const appendExpenseDescription = () => {
     expenseDescription.innerHTML = ''
 
     const data = JSON.parse(localStorage.getItem('customer'))
-    const splicedDataExpenses = data.expenses.splice(1, data.incomes.length)
 
-    splicedDataExpenses.forEach((description) => {
+    data.expenses.forEach((description) => {
         const userDescription = `<div>${description.description}</div>`;
         expenseDescription.innerHTML += userDescription;
     });
@@ -75,9 +74,8 @@ const appendExpenseAmount = () => {
     expenseAmount.innerHTML = ''
 
     const data = JSON.parse(localStorage.getItem('customer'))
-    const splicedDataExpenses = data.expenses.splice(1, data.incomes.length)
 
-    splicedDataExpenses.forEach((amount) => {
+    data.expenses.forEach((amount) => {
         const userAmount = `<div>${amount.amount}</div>`;
         expenseAmount.innerHTML += userAmount;
     });
@@ -85,14 +83,24 @@ const appendExpenseAmount = () => {
 
 const appendIncomeDate = () => {
     const incomeDate = document.querySelector('.income-date');
-    incomeDate.innerHTML += `<div>${personAccount.date()}</div>`
+    incomeDate.innerHTML = ''
+
+    const data = JSON.parse(localStorage.getItem('customer'))
+
+    data.incomes.forEach((date) => {
+        incomeDate.innerHTML += `<div>${date.date}</div>`
+    });
 }
 
 const appendExpenseDate = () => {
     const expenseDate = document.querySelector('.expense-date');
-    expenseDate.innerHTML += `<div>${personAccount.date()}</div>`
+    expenseDate.innerHTML = ''
+
+    const data = JSON.parse(localStorage.getItem('customer'))
+    
+    data.expenses.forEach((date) => {
+        expenseDate.innerHTML += `<div>${date.date}</div>`
+    })
+    
 }
 
-
-
-console.log("BEGIN localStorage :", localStorage);

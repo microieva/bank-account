@@ -1,20 +1,8 @@
 const personAccount = {
     firstName: 'Ieva',
     lastName: 'Vyliaudaite',
-    incomes: [
-        {
-            description: "", 
-            amount: 0,
-            date: "date"   
-        }
-    ],
-    expenses: [
-        {
-            description: "", 
-            amount: 0,
-            date: "date"
-        }
-    ],
+    incomes: [],
+    expenses: [],
 
     date: function() {
         //turn date to seperate strings > into array

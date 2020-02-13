@@ -1,11 +1,7 @@
-const run = () => {
-    displayIncomes();
-    displayExpenses();
-}
-
-
-// if (theres a customer) {
-//     run();
-// else {
-//     set a customer
-// }
+if (!(localStorage.getItem('customer'))) {
+    const personAccountStr = JSON.stringify(personAccount, undefined, 4)
+    localStorage.setItem('customer', personAccountStr)
+    run();   
+} else {
+    run();
+} 
