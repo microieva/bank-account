@@ -16,7 +16,7 @@ const run = () => {
 const displayIncomes = () => {
     appendIncomeDescription();
     appendIncomeAmount();
-    appendIncomeDate()   
+    appendIncomeDate();   
 }
 
 const displayExpenses = () => {
@@ -25,13 +25,7 @@ const displayExpenses = () => {
     appendExpenseDate();
 }
 
-const appendBalance = () => {
-    const info = document.querySelector('.balance-info');
-    info.innerHTML = '';
-    const balance = `<div>You have ${personAccount.accountBalance()} € on your account.</div>`
-    info.innerHTML += balance;
-}
-
+// --------------------------------display incomes---------------------------------------
 const appendIncomeDescription = () => {
     const incomeDescription = document.querySelector('.income-description');
     incomeDescription.innerHTML = ''
@@ -57,6 +51,18 @@ const appendIncomeAmount = () => {
     });   
 }
 
+const appendIncomeDate = () => {
+    const incomeDate = document.querySelector('.income-date');
+    incomeDate.innerHTML = ''
+
+    const data = JSON.parse(localStorage.getItem('customer'))
+
+    data.incomes.forEach((date) => {
+        incomeDate.innerHTML += `<div>${date.date}</div>`
+    });
+}
+
+// -------------------------------display expenses---------------------------------------
 const appendExpenseDescription = () => {
     const expenseDescription = document.querySelector('.expense-description');
     expenseDescription.innerHTML = ''
@@ -81,17 +87,6 @@ const appendExpenseAmount = () => {
     });
 }
 
-const appendIncomeDate = () => {
-    const incomeDate = document.querySelector('.income-date');
-    incomeDate.innerHTML = ''
-
-    const data = JSON.parse(localStorage.getItem('customer'))
-
-    data.incomes.forEach((date) => {
-        incomeDate.innerHTML += `<div>${date.date}</div>`
-    });
-}
-
 const appendExpenseDate = () => {
     const expenseDate = document.querySelector('.expense-date');
     expenseDate.innerHTML = ''
@@ -102,5 +97,13 @@ const appendExpenseDate = () => {
         expenseDate.innerHTML += `<div>${date.date}</div>`
     })
     
+}
+
+// -----------------------------------balance-------------------------------------------
+const appendBalance = () => {
+    const info = document.querySelector('.balance-info');
+    info.innerHTML = '';
+    const balance = `<div>You have ${personAccount.accountBalance()} € on your account.</div>`
+    info.innerHTML += balance;
 }
 
