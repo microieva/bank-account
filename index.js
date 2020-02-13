@@ -1,0 +1,4 @@
+const run = () => {
+    displayIncomes();
+    displayExpenses();
+}

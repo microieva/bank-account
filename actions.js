@@ -8,9 +8,7 @@ buttonAdd.addEventListener('click', () => {
             localStorage.setItem('customer', personAccountStr)
         } 
         personAccount.addIncome();
-        appendIncomeDescription();
-        appendIncomeAmount();
-        appendIncomeDate()
+        displayIncomes();
     } 
     if (selectType.value === 'EXPENSE' && description.value !='' && amount.value !='') {
         
@@ -19,9 +17,7 @@ buttonAdd.addEventListener('click', () => {
             localStorage.setItem('customer', personAccountStr)
         } 
         personAccount.addExpense();
-        appendExpenseDescription();
-        appendExpenseAmount();
-        appendExpenseDate();
+        displayExpenses();
     } 
     appendBalance();
     amount.value = '';
