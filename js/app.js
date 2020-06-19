@@ -1,3 +1,4 @@
+const data = JSON.parse(localStorage.getItem('customer'));
 
 const buttonAdd = document.querySelector('.button-add');
 const description = document.querySelector('.user-input-description');
@@ -30,8 +31,6 @@ const appendIncomeDescription = () => {
     const incomeDescription = document.querySelector('.income-description');
     incomeDescription.innerHTML = ''
 
-    const data = JSON.parse(localStorage.getItem('customer'))
-    //getting rid of the first empty dummy entry, in initial state object blueprint
     data.incomes.forEach((description) => {
         const userDescription = `<div>${description.description}</div>`;
         incomeDescription.innerHTML += userDescription;
@@ -43,8 +42,6 @@ const appendIncomeAmount = () => {
     const incomeAmount = document.querySelector('.income-amount');
     incomeAmount.innerHTML = ''
 
-    const data = JSON.parse(localStorage.getItem('customer'))
-
     data.incomes.forEach((amount) => {
         const userAmount = `<div>${amount.amount}</div>`;
         incomeAmount.innerHTML += userAmount;
@@ -54,8 +51,6 @@ const appendIncomeAmount = () => {
 const appendIncomeDate = () => {
     const incomeDate = document.querySelector('.income-date');
     incomeDate.innerHTML = ''
-
-    const data = JSON.parse(localStorage.getItem('customer'))
 
     data.incomes.forEach((date) => {
         incomeDate.innerHTML += `<div>${date.date}</div>`
@@ -67,8 +62,6 @@ const appendExpenseDescription = () => {
     const expenseDescription = document.querySelector('.expense-description');
     expenseDescription.innerHTML = ''
 
-    const data = JSON.parse(localStorage.getItem('customer'))
-
     data.expenses.forEach((description) => {
         const userDescription = `<div>${description.description}</div>`;
         expenseDescription.innerHTML += userDescription;
@@ -79,8 +72,6 @@ const appendExpenseAmount = () => {
     const expenseAmount = document.querySelector('.expense-amount');
     expenseAmount.innerHTML = ''
 
-    const data = JSON.parse(localStorage.getItem('customer'))
-
     data.expenses.forEach((amount) => {
         const userAmount = `<div>${amount.amount}</div>`;
         expenseAmount.innerHTML += userAmount;
@@ -90,8 +81,6 @@ const appendExpenseAmount = () => {
 const appendExpenseDate = () => {
     const expenseDate = document.querySelector('.expense-date');
     expenseDate.innerHTML = ''
-
-    const data = JSON.parse(localStorage.getItem('customer'))
     
     data.expenses.forEach((date) => {
         expenseDate.innerHTML += `<div>${date.date}</div>`
