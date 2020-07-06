@@ -14,7 +14,7 @@ const personAccount = {
         let month = '';
         let day = '';
         let year = '';
-        const time = date.getHours()+':'+date.getMinutes();
+        let time = date.getHours()+':'+ date.getMinutes();
         
         month += (str[4] + str[5] + str[6]);
         day += (str[8] + str[9]);

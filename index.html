@@ -10,8 +10,8 @@
 </head>
 <body>
     <header></header>
-    <main class='container'>
-        <div class="top-container">
+    <main class='wrapper'>
+        <div class="header">
             <h1>ACCOUNT BALANCE</h1>
         </div>
         <div class='ui-container'>
@@ -24,28 +24,29 @@
                 </select>
                 <button class='button-add'>Add</button>
             </div>
-            <div class="container-cards">
-                <div class="card incomes">
-                    <div class="title"><h2>Incomes</h2></div>
-                    <div class="entry entry-incomes">
-                        <div class="income-description"></div>
-                        <div class="income-amount"></div>
-                        <div class="income-date"></div>
+            <div class="display-container">
+                <div class="container incomes-expenses-container">
+                    <div class="container incomes">
+                        <div class="title"><h2>Incomes</h2></div>
+                        <div class="entry entry-incomes">
+                            <div class="income-description"></div>
+                            <div class="income-amount"></div>
+                            <div class="income-date"></div>
+                        </div>
+                    </div>
+                    <div class="container expenses">
+                        <div class="title"><h2>Expenses</h2></div>
+                        <div class="entry entry-expenses">
+                            <div class="expense-description"></div>
+                            <div class="expense-amount"></div>
+                            <div class="expense-date"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="card expenses">
-                    <div class="title"><h2>Expenses</h2></div>
-                    <div class="entry entry-expenses">
-                        <div class="expense-description"></div>
-                        <div class="expense-amount"></div>
-                        <div class="expense-date"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="card balance">
-                <div class="title"><h2>Balance</h2></div>
-                <div class="balance-info">
-
+                
+                <div class="container balance-container">
+                    <div class="title"><h2>Balance</h2></div>
+                    <div class="balance-info"></div>
                 </div>
             </div>
         </div>

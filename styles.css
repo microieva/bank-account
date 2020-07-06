@@ -4,18 +4,20 @@ body {
     color: rgb(34, 34, 34);
 }
 
-.container {
+.wrapper {
     display: flex;
     flex-direction: column;
-    
+    align-items: center;
 }
 
-.top-container {
+.header {
     border: 2px solid darkgray;
     border-radius: 7px;
-    margin-bottom: 3rem;
+    /* margin-bottom: 3rem; */
     box-shadow:1px 1px 1px 1px lightgrey;
+    margin: 1rem 0;
     padding: 1rem 0;
+    min-width: 1100px;
 }
 
 h1 {
@@ -27,15 +29,38 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 2rem 0;
+    min-width: 1100px;
     border: 2px solid darkgray;
     border-radius: 7px;
-    padding: 0 0 3rem 1rem;
     box-shadow:1px 1px 1px 1px lightgrey;
 }
 
 .user-inputs {
-    margin: 3rem 0;
+    margin: 2rem 0;
 }
+
+.display-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: center;
+}
+
+.incomes-expenses-container {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1rem;
+}
+
+.container {
+    border: 1px solid lightgray;
+    border-radius: 7px;
+    width: 90%;
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
 
 input {
     min-height: 1.5rem;
@@ -75,43 +100,30 @@ button:focus {
     outline: none;
 }
 
-.container-cards {
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 3rem;
-    padding: 0 2rem;
-    width: 100%;
-}
-
-.card {
-    width: 45%;
-    border: 1px solid lightgray;
-    border-radius: 7px;
-    margin: 0 1rem 0 0;
-    padding: 0 3rem;
-}
 
 .entry {
     display: flex;
     justify-content: space-between;
-    padding: 1rem 0;
+    /* padding: 0.5rem 0; */
 }
 
 .entry>div {
-    min-width: 30%;
+    min-width: 25%;
     text-align: center;
     margin-bottom: 2rem;
+    padding: 1rem;
 }
 
 .entry>div>div {
-    min-width: 100%;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
     border-bottom: 1px solid darkgray;
 }
 
 .title {
     border-bottom: 1px solid lightgray;
     text-align: center;
-    margin: 1rem 0;
+    margin: 1rem 1rem 2rem 1rem;
 }
 
 .balance {
@@ -120,8 +132,7 @@ button:focus {
 
 .balance-info>div {
     text-align: center;
-    min-width: 100%;
     border-bottom: 1px solid darkgray;
-    margin-bottom: 2rem;
+    margin: 1rem 1rem 2rem 1rem;
 }
 
